@@ -73,8 +73,8 @@ export default function ScrollEffect() {
     if (!loadingComplete) return;
 
     const handleScroll = () => {
-          // Projects section removed from scroll spy since it's hidden
-          const sections = ['home', 'about', 'resume'];
+          // Added career-goals to scroll spy
+          const sections = ['home', 'about', 'career-goals', 'resume'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar
 
       for (const section of sections) {
@@ -224,6 +224,7 @@ export default function ScrollEffect() {
           <div className="nav-links">
             <button onClick={() => scrollToSection('home')} className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}>Home</button>
             <button onClick={() => scrollToSection('about')} className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>About Me</button>
+            <button onClick={() => scrollToSection('career-goals')} className={`nav-link ${activeSection === 'career-goals' ? 'active' : ''}`}>Career Goals</button>
             <button onClick={() => scrollToSection('resume')} className={`nav-link ${activeSection === 'resume' ? 'active' : ''}`}>Resume</button>
             {/* Projects tab hidden - might add back later if owner wants */}
             {/* <button onClick={() => scrollToSection('projects')} className={`nav-link nav-link-projects ${activeSection === 'projects' ? 'active' : ''}`}>Projects</button> */}
@@ -431,6 +432,19 @@ export default function ScrollEffect() {
                       <a href="https://github.com/dhruvsa1" target="_blank" rel="noopener noreferrer" className="contact-link">GitHub: dhruvsa1</a>
                     </div>
                   </div>
+                  
+                  {/* Expanded Bio Narrative */}
+                  <div className="bio-narrative mt-8 mb-4 text-gray-300 leading-relaxed space-y-4">
+                    <p>
+                      Hello! I am an aspiring software engineer blending a deep curiosity for both software algorithms and hardware engineering. My journey into technology started with an innate desire to understand how complex systems operate under the hood, leading me to pursue a Bachelor of Science in Computer Engineering at the Georgia Institute of Technology. Through rigorous coursework in Data Structures &amp; Algorithms, Object-Oriented Programming, and Physics, I have cultivated a strong foundation for tackling ambiguous, open-ended problems effectively.
+                    </p>
+                    <p>
+                      During my time in the FIRST Robotics Competition, I had the incredible opportunity to serve as the Programming and CAD Subcommittee Lead, ultimately qualifying for the World Championships. Working extensively with Java, C++, ROS, and computer vision on embedded systems like the Raspberry Pi completely shifted my perspective on what's possible when software meets the physical world. Since then, I've expanded my horizons into full-stack web development and AI. Recently, during my internship at KKTutors, I migrated a complex Angular frontend to a modernized React architecture, cutting load times significantly, and successfully deployed scalable REST APIs using the MERN stack. I also leveraged state-of-the-art AI models through the OpenAI API to construct an automated problem generator, drastically reducing curriculum development time.
+                    </p>
+                    <p>
+                      Beyond the screen, I am fiercely driven by the impact technology can have on everyday life. Whether I am building an iOS application equipped with Firebase real-time updates to monitor dorm laundry availability, or developing a custom-built, autonomous tracking drone programmed with YOLOv8, I am always seeking out cutting-edge projects that push my technical boundaries. Through a combination of perseverance, continuous learning, and an unyielding commitment to delivering elegant solutions, my ultimate vision is to leverage my multidisciplinary background to shape and lead impactful technical products from conceptualization to execution.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Education Section */}
@@ -452,21 +466,41 @@ export default function ScrollEffect() {
                 {/* Experience Section */}
                 <div className="about-content-section">
                   <h2 className="content-section-title">Experience</h2>
-                  <div className="info-block">
-                    <div className="info-header">
-                      <h3 className="info-title">KKTutors</h3>
-                      <span className="info-location">Suwanee, GA</span>
-                    </div>
-                    <div className="info-subtitle">Full Stack Website Developer Intern</div>
-                    <div className="info-date">May 2025 – June 2025</div>
-                    <ul className="info-list">
+                  <div className="info-block group relative p-8 -mx-8 rounded-3xl transition-all duration-700 hover:bg-white/[0.04] border border-transparent hover:border-white/10 overflow-hidden shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.03)]">
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    <div className="project-content-grid relative z-10 flex flex-col md:flex-row gap-8 items-center mb-6">
+                      <div className="project-image-wrapper flex-shrink-0 relative overflow-hidden group-hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] transition-all duration-700 w-full md:w-[320px] rounded-2xl border border-white/10 group-hover:border-emerald-500/20">
+                        <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <img src="/visuals/kktutors1.png" alt="KKTutors Development Environment" className="w-full h-auto block transform-gpu transition-transform duration-1000 ease-in-out group-hover:scale-110" />
+                      </div>
+                      <div className="project-details flex-1">
+                        <div className="info-header mb-2 flex flex-col sm:flex-row sm:items-center justify-between">
+                          <div>
+                            <h3 className="info-title text-3xl font-extrabold text-white tracking-tight transition-colors group-hover:text-emerald-400">KKTutors</h3>
+                            <div className="text-gray-400 text-sm mt-1 mb-2 sm:mb-0">Suwanee, GA • May 2025 – June 2025</div>
+                          </div>
+                          <div>
+                            <a href="https://kktutors.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold tracking-wide text-black bg-white rounded-full hover:bg-emerald-400 hover:text-black transition-all shadow-lg hover:shadow-emerald-500/20 hover:scale-105 active:scale-95 duration-300 group/btn">
+                              Visit Project <span className="ml-2 font-sans font-bold transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1">↗</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div className="info-subtitle text-emerald-300/80 font-medium text-lg mb-4">Full Stack Website Developer Intern</div>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {"React, Node.js, MongoDB, Express, Python, AWS".split(', ').map((tech, i) => (
+                            <span key={i} className="text-[11px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all duration-300 hover:bg-emerald-500/20 hover:text-emerald-200 hover:border-emerald-500/30 hover:-translate-y-0.5 whitespace-nowrap">{tech}</span>
+                          ))}
+                        </div>
+                        <ul className="info-list mt-3 text-gray-300/90 leading-relaxed">
                       <li>Led the migration of the tutoring platform's frontend from Angular to React, modernizing the UI architecture, improving load times by 40%, and enabling reusable components.</li>
                       <li>Built and maintained full-stack web applications for a tutoring platform serving 100+ active students, leveraging the MERN stack (MongoDB, Express.js, React, Node.js) to deliver scalable REST APIs and responsive UIs.</li>
                       <li>Developed AI-powered problem generator and assessment software using Python, Flask, MongoDB, and the OpenAI API, reducing manual test creation time by 80%.</li>
                       <li>Implemented real-time analytics dashboards tracking performance metrics across 100+ students using React state management and Node.js APIs with sub-200ms latency.</li>
                       <li>Deployed and managed web services on AWS Lightsail using containerized environments for high availability and scalable infrastructure.</li>
                       <li>Applied best practices in version control, debugging, and agile iteration, cutting bug resolution time by 30%.</li>
-                    </ul>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -474,10 +508,109 @@ export default function ScrollEffect() {
                 <div className="about-content-section">
                   <h2 className="content-section-title">Projects</h2>
                   
-                  <div className="info-block">
-                    <div className="info-header">
-                      <h3 className="info-title">GTDormLaundry</h3>
-                      <span className="info-tech">SwiftUI, Firebase, REST API</span>
+                  <div className="info-block project-with-image mb-16 group relative p-8 -mx-8 rounded-3xl transition-all duration-700 hover:bg-white/[0.04] border border-transparent hover:border-white/10 overflow-hidden shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.03)]">
+                    <div className="absolute inset-0 bg-gradient-to-l from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    <div className="project-content-grid relative z-10 flex flex-col md:flex-row-reverse gap-10 items-center">
+                      <div className="project-image-wrapper flex-shrink-0 relative overflow-hidden group-hover:shadow-[0_0_40px_rgba(99,102,241,0.1)] transition-all duration-700 w-full md:w-[380px] rounded-2xl border border-white/10 group-hover:border-indigo-500/20">
+                        <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <img src="/visuals/projectnonfiction.png" alt="Project Nonfiction Streaming App" className="w-full h-auto block transform-gpu transition-transform duration-1000 ease-in-out group-hover:scale-110" />
+                      </div>
+                      <div className="project-details flex-1">
+                        <div className="info-header mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
+                          <div>
+                            <h3 className="info-title text-3xl font-extrabold text-white tracking-tight transition-colors group-hover:text-indigo-400">Project Nonfiction</h3>
+                            <div className="text-gray-400 text-sm mt-2">PNF V2</div>
+                          </div>
+                          <div className="mt-4 sm:mt-0">
+                            <a href="https://projectnonfiction.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold tracking-wide text-black bg-white rounded-full hover:bg-indigo-400 hover:text-white transition-all shadow-lg hover:shadow-indigo-500/20 hover:scale-105 active:scale-95 duration-300 group/btn">
+                              Visit Project <span className="ml-2 font-sans font-bold transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1">↗</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {"Next.js 16, TypeScript, Tailwind, Supabase, Bunny Stream".split(', ').map((tech, i) => (
+                            <span key={i} className="text-[11px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all duration-300 hover:bg-indigo-500/20 hover:text-indigo-200 hover:border-indigo-500/30 hover:-translate-y-0.5 whitespace-nowrap">{tech}</span>
+                          ))}
+                        </div>
+                        <p className="mb-4 text-gray-300/90 leading-relaxed text-[15px]">Project Nonfiction is a feature-rich, full-stack documentary streaming platform designed to help viewers learn about real-world topics through high-quality film. The application acts as a comprehensive content management system equipped with automated ingestion webhooks and a scheduled release hierarchy.</p>
+                        <ul className="info-list text-gray-400 text-sm leading-relaxed">
+                          <li>Developed a robust user authentication and paywall workflow utilizing Supabase Auth with granular role-based access control (RBAC), mapped to hierarchical tiers like Premium and VIP.</li>
+                          <li>Engineered an extensive administrative dashboard using Recharts for analytics, facilitating the management of dynamic content such as modular series hierarchies and custom collections.</li>
+                          <li>Implemented secure, short-TTL tokenized HLS video playback integrations via Bunny Stream supported by Redis rate-limiting constructs.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="info-block project-with-image mb-16 group relative p-8 -mx-8 rounded-3xl transition-all duration-700 hover:bg-white/[0.04] border border-transparent hover:border-white/10 overflow-hidden shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.03)]">
+                    <div className="absolute inset-0 bg-gradient-to-tl from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    <div className="project-content-grid relative z-10 flex flex-col md:flex-row gap-10 items-center">
+                      <div className="project-image-wrapper flex-shrink-0 relative overflow-hidden group-hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-700 w-full md:w-[380px] rounded-2xl border border-white/10 group-hover:border-cyan-500/20">
+                        <div className="absolute inset-0 bg-cyan-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <img src="/visuals/antijoblessness.png" alt="AntiJobless Analytics Dashboard" className="w-full h-auto block transform-gpu transition-transform duration-1000 ease-in-out group-hover:scale-110" />
+                      </div>
+                      <div className="project-details flex-1">
+                        <div className="info-header mb-4">
+                          <h3 className="info-title text-3xl font-extrabold text-white tracking-tight transition-colors group-hover:text-cyan-400">Anti-Joblessness</h3>
+                          <div className="text-gray-400 text-sm mt-2">AI Resume & Application Tailoring Tool</div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {"Next.js, Supabase, Anthropic API, LaTeX pipeline".split(', ').map((tech, i) => (
+                            <span key={i} className="text-[11px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all duration-300 hover:bg-cyan-500/20 hover:text-cyan-200 hover:border-cyan-500/30 hover:-translate-y-0.5 whitespace-nowrap">{tech}</span>
+                          ))}
+                        </div>
+                        <p className="mb-4 text-gray-300/90 leading-relaxed text-[15px]">Anti-Joblessness is an all-in-one web platform acting as a highly capable job search companion tailored for students hunting for internships and full-time roles. The system brilliantly merges structured application funnel tracking with powerful, AI-driven LaTeX resume tailoring functionality.</p>
+                        <ul className="info-list text-gray-400 text-sm leading-relaxed">
+                          <li>Integrated Anthropic's Claude to algorithmically parse abstract job descriptions, tailoring underlying LaTeX resume templates directly to ATS keyword requirements flawlessly.</li>
+                          <li>Designed an interactive 'Studio' workbench that provides targeted metric scoring along dimensions like writing quality and returns precise bullet-level feedback with change logs tracking specific iterations.</li>
+                          <li>Constructed a Postgres-backed CRM using Supabase to manage user telemetry, tracking application lifecycles from submission to offer stages along with generative usage accounting logs.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="info-block project-with-image mb-16 group relative p-8 -mx-8 rounded-3xl transition-all duration-700 hover:bg-white/[0.04] border border-transparent hover:border-white/10 overflow-hidden shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.03)]">
+                    <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    <div className="project-content-grid relative z-10 flex flex-col md:flex-row-reverse gap-10 items-center">
+                      <div className="project-image-wrapper flex-shrink-0 relative overflow-hidden group-hover:shadow-[0_0_40px_rgba(245,158,11,0.1)] transition-all duration-700 w-full md:w-[320px] rounded-2xl border border-white/10 group-hover:border-amber-500/20">
+                        <div className="absolute inset-0 bg-amber-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <img src="/visuals/save1.png" alt="Sav3 Mobile Application Swipe UI" className="w-full h-auto block transform-gpu transition-transform duration-1000 ease-in-out group-hover:scale-110" />
+                      </div>
+                      <div className="project-details flex-1">
+                        <div className="info-header mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
+                          <div>
+                            <h3 className="info-title text-3xl font-extrabold text-white tracking-tight transition-colors group-hover:text-amber-400">Sav3</h3>
+                            <div className="text-gray-400 text-sm mt-2">Credit Card Discovery Platform</div>
+                          </div>
+                          <div className="mt-4 sm:mt-0">
+                            <a href="https://save.vercel.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold tracking-wide text-black bg-white rounded-full hover:bg-amber-400 hover:text-black transition-all shadow-lg hover:shadow-amber-500/20 hover:scale-105 active:scale-95 duration-300 group/btn">
+                              Visit Project <span className="ml-2 font-sans font-bold transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1">↗</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {"React Native, Expo, TypeScript, Supabase Edge Functions".split(', ').map((tech, i) => (
+                            <span key={i} className="text-[11px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all duration-300 hover:bg-amber-500/20 hover:text-amber-200 hover:border-amber-500/30 hover:-translate-y-0.5 whitespace-nowrap">{tech}</span>
+                          ))}
+                        </div>
+                        <p className="mb-4 text-gray-300/90 leading-relaxed text-[15px]">Sav3 is an intuitive mobile application built for browsing and curating credit card offers using engaging swipe deck mechanics. The experience heavily relies on individual user preference onboarding metrics to calculate highly personalized, dynamically ordered recommendation models.</p>
+                        <ul className="info-list text-gray-400 text-sm leading-relaxed">
+                          <li>Developed a fluid, gesture-driven mobile UI using React Native Reanimated, creating highly responsive right-swipe (save) and left-swipe (pass) interaction event listeners.</li>
+                          <li>Engineered an adaptive, behavioral ranking algorithm that leverages tracking events to adjust the deck hierarchy dynamically, seamlessly elevating cards tailored to personal annual-fee preferences to the top.</li>
+                          <li>Integrated Supabase Edge Functions paired with internal AI generations to provide contextualized "sparkle" insights detailing dynamic match percentages on top cards.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="info-block group relative p-5 -mx-5 rounded-2xl transition-all duration-500 hover:bg-white/[0.03] border border-transparent hover:border-white/10 mb-6">
+                    <div className="info-header mb-3 text-white">
+                      <h3 className="info-title text-xl font-bold transition-colors">GTDormLaundry</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {"SwiftUI, Firebase, REST API".split(', ').map((tech, i) => (
+                          <span key={i} className="text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all hover:bg-white/10 whitespace-nowrap">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                     <ul className="info-list">
                       <li>Developed an iOS app using SwiftUI to monitor washer/dryer availability with real-time Firebase updates.</li>
@@ -487,10 +620,14 @@ export default function ScrollEffect() {
                     </ul>
                   </div>
 
-                  <div className="info-block">
-                    <div className="info-header">
-                      <h3 className="info-title">Local Whisper Transcriber</h3>
-                      <span className="info-tech">Python, Rust, Faster-Whisper, CTranslate2</span>
+                  <div className="info-block group relative p-5 -mx-5 rounded-2xl transition-all duration-500 hover:bg-white/[0.03] border border-transparent hover:border-white/10 mb-6">
+                    <div className="info-header mb-3 text-white">
+                      <h3 className="info-title text-xl font-bold transition-colors">Local Whisper Transcriber</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {"Python, Rust, Faster-Whisper, CTranslate2".split(', ').map((tech, i) => (
+                          <span key={i} className="text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all hover:bg-white/10 whitespace-nowrap">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                     <ul className="info-list">
                       <li>Built an offline audio-to-text transcription app using Whisper + Faster-Whisper supporting GPU/CPU inference.</li>
@@ -500,10 +637,14 @@ export default function ScrollEffect() {
                     </ul>
                   </div>
 
-                  <div className="info-block">
-                    <div className="info-header">
-                      <h3 className="info-title">AeroTrack Drone</h3>
-                      <span className="info-tech">Raspberry Pi, YOLOv8, Computer Vision</span>
+                  <div className="info-block group relative p-5 -mx-5 rounded-2xl transition-all duration-500 hover:bg-white/[0.03] border border-transparent hover:border-white/10 mb-6">
+                    <div className="info-header mb-3 text-white">
+                      <h3 className="info-title text-xl font-bold transition-colors">AeroTrack Drone</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {"Raspberry Pi, YOLOv8, Computer Vision".split(', ').map((tech, i) => (
+                          <span key={i} className="text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all hover:bg-white/10 whitespace-nowrap">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                     <ul className="info-list">
                       <li>Built a custom drone integrating Raspberry Pi, camera module, and soldered hardware for autonomous vision-based tracking.</li>
@@ -512,10 +653,14 @@ export default function ScrollEffect() {
                     </ul>
                   </div>
 
-                  <div className="info-block">
-                    <div className="info-header">
-                      <h3 className="info-title">FIRST Robotics Competition</h3>
-                      <span className="info-tech">Java, C++, PlatformIO, ROS, Raspberry Pi, WPILib, SolidWorks, OnShape</span>
+                  <div className="info-block group relative p-5 -mx-5 rounded-2xl transition-all duration-500 hover:bg-white/[0.03] border border-transparent hover:border-white/10 mb-6">
+                    <div className="info-header mb-3 text-white">
+                      <h3 className="info-title text-xl font-bold transition-colors">FIRST Robotics Competition</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {"Java, C++, PlatformIO, ROS, Raspberry Pi, WPILib, SolidWorks, OnShape".split(', ').map((tech, i) => (
+                          <span key={i} className="text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10 backdrop-blur-md transition-all hover:bg-white/10 whitespace-nowrap">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                     <ul className="info-list">
                       <li>Programming Lead and CAD Subcommittee Lead; qualified for World Championships and placed Top 10 at Georgia State.</li>
@@ -559,17 +704,91 @@ export default function ScrollEffect() {
         </section>
       )}
 
+      {/* Career Goals Section */}
+      {loadingComplete && (
+        <section id="career-goals" className="page-section content-section">
+          <div className="section-content">
+            <h2 className="section-title">Career Goals & Roadmap</h2>
+            
+            <div className="career-goals-container mt-8">
+              <div className="primary-goal-card relative p-8 mb-12 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.3)] group transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_60px_rgba(99,102,241,0.15)] bg-slate-900/40 backdrop-blur-xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-cyan-500/10 opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-700"></div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-extrabold mb-5 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent transform transition-all duration-500 group-hover:translate-x-1">Long-Term Aspirations</h3>
+                  <p className="text-lg text-gray-300/90 leading-relaxed font-light">
+                    My definitive long-term goal revolves around climbing the ladder in Big Tech while strategically transitioning my expertise. Next year, I am entirely focused on breaking into a competitive Software Engineering (SWE) role at an industry-leading tech company or a prominent, well-funded startup—targeting a highly competitive compensation structure to guarantee financial momentum early in my timeline. 
+                  </p>
+                  <p className="text-lg text-gray-300/90 leading-relaxed font-light mt-5">
+                    Once my foot is firmly within the door and I have mastered the enterprise software engineering landscape, my roadmap dictates a calculated pivot toward specialized, hardware-oriented software engineering roles. This aligns deeply with my passion for computer engineering and embedded systems. Ultimately, in the longer horizon, I intend to transition away from purely technical implementation into highly impactful, non-technical leadership roles. Driving overarching product vision as a Product Manager will allow me to oversee the bleeding edge of multidisciplinary engineering, scale major technological decisions, and maximize my overall impact and compensation roadmap.
+                  </p>
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-indigo-500 rounded-full"></span>
+                Strategic Timeline & Actionable Steps
+              </h3>
+              
+              <div className="timeline-container relative pl-8 border-l-2 border-indigo-500/20 space-y-12 pb-8 ml-4">
+                {/* Step 1 */}
+                <div className="timeline-item relative group">
+                  <div className="absolute w-5 h-5 bg-cyan-400 rounded-full -left-[43px] top-1 shadow-[0_0_15px_rgba(34,211,238,0.6)] transition-all duration-500 group-hover:scale-125 group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] group-hover:bg-cyan-300"></div>
+                  <div className="bg-slate-900/30 border border-white/5 p-6 rounded-2xl backdrop-blur-sm transition-all duration-500 group-hover:bg-white/[0.03] group-hover:border-white/10 group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <h4 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-400">1. Core SWE Domination (0-1 Years)</h4>
+                    <p className="text-gray-400 mt-3 leading-relaxed">
+                      Secure an elite SWE position at a tier-1 technology firm or hyper-growth startup next year. To achieve this, I am actively sharpening my distributed systems knowledge, heavily networking using my ePortfolio and active full-stack projects, and mastering high-level system design fundamentals.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Step 2 */}
+                <div className="timeline-item relative group">
+                  <div className="absolute w-5 h-5 bg-blue-500 rounded-full -left-[43px] top-1 shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-500 group-hover:scale-125 group-hover:shadow-[0_0_25px_rgba(59,130,246,1)] group-hover:bg-blue-400"></div>
+                  <div className="bg-slate-900/30 border border-white/5 p-6 rounded-2xl backdrop-blur-sm transition-all duration-500 group-hover:bg-white/[0.03] group-hover:border-white/10 group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <h4 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-blue-400">2. Hardware-Software Integration Pivot (2-4 Years)</h4>
+                    <p className="text-gray-400 mt-3 leading-relaxed">
+                      Leverage my multidisciplinary B.S. in Computer Engineering from Georgia Tech to migrate internally or externally into embedded systems or specialized hardware-software integration teams. This includes actively taking advanced electronics coursework and seeking internal mobility routes once formally hired.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="timeline-item relative group">
+                  <div className="absolute w-5 h-5 bg-purple-500 rounded-full -left-[43px] top-1 shadow-[0_0_15px_rgba(168,85,247,0.6)] transition-all duration-500 group-hover:scale-125 group-hover:shadow-[0_0_25px_rgba(168,85,247,1)] group-hover:bg-purple-400"></div>
+                  <div className="bg-slate-900/30 border border-white/5 p-6 rounded-2xl backdrop-blur-sm transition-all duration-500 group-hover:bg-white/[0.03] group-hover:border-white/10 group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <h4 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-purple-400">3. Product Leadership Transition (5+ Years)</h4>
+                    <p className="text-gray-400 mt-3 leading-relaxed">
+                      Pivot toward the business-driven side of technology by transitioning into a dedicated Product Management (PM) trajectory. By capitalizing on my deep technical understanding of both software stacks and hardware architecture, I will effectively bridge the gap between engineering execution and overarching product strategy.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Resume Section */}
       {loadingComplete && (
         <section id="resume" className="page-section content-section">
           <div className="section-content">
             <h2 className="section-title">Resume</h2>
-            <div className="resume-container">
+            <div className="resume-container group">
+              {/* macOS style window buttons */}
+              <div className="absolute top-4 left-5 flex gap-2 z-20">
+                <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)] transition-transform duration-300 hover:scale-110"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-transform duration-300 hover:scale-110"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_10px_rgba(34,197,94,0.5)] transition-transform duration-300 hover:scale-110"></div>
+              </div>
+              <div className="absolute top-4 inset-x-0 mx-auto text-center pointer-events-none z-20">
+                <span className="text-xs font-semibold text-gray-400 tracking-wider">resume.pdf</span>
+              </div>
               <iframe 
                 src="https://drive.google.com/file/d/1lB2u6K1f3o5IvdyWAFXVCZOQA5uAL39s/preview" 
                 width="100%" 
                 height="800px"
-                style={{ border: 'none', borderRadius: '8px' }}
+                style={{ border: 'none' }}
                 title="Resume"
               />
               <div className="resume-link-container">
