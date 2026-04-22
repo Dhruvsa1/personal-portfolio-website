@@ -2,7 +2,7 @@
 
 type SectionId =
   | 'overview' | 'walkthrough' | 'documentation' | 'architecture'
-  | 'planner' | 'signal' | 'timeline' | 'photos' | 'videos'
+  | 'planner' | 'signal' | 'timeline' | 'photos'
   | 'skills' | 'reflections';
 
 interface Props {
