@@ -117,6 +117,26 @@
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
+/* Discovery Project — stand-out pill */
+.nav-link-discovery {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 185, 85, 0.45);
+  background: linear-gradient(135deg, rgba(247, 185, 85, 0.12), rgba(94, 234, 212, 0.08));
+  color: #f7b955;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+}
+.nav-link-discovery::after { display: none; }
+.nav-link-discovery:hover {
+  color: #ffca6a;
+  border-color: rgba(247, 185, 85, 0.85);
+  background: linear-gradient(135deg, rgba(247, 185, 85, 0.2), rgba(94, 234, 212, 0.12));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(247, 185, 85, 0.2);
+}
+
 /* Responsive Navigation */
 @media (max-width: 768px) {
   .top-nav {

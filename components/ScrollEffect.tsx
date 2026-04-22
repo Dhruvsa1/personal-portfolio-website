@@ -74,7 +74,7 @@ export default function ScrollEffect() {
 
     const handleScroll = () => {
           // Added career-goals to scroll spy
-          const sections = ['home', 'about', 'career-goals', 'resume'];
+          const sections = ['home', 'about', 'career-goals', 'project-showcase', 'resume'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar
 
       for (const section of sections) {
@@ -225,6 +225,7 @@ export default function ScrollEffect() {
             <button onClick={() => scrollToSection('home')} className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}>Home</button>
             <button onClick={() => scrollToSection('about')} className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>About Me</button>
             <button onClick={() => scrollToSection('career-goals')} className={`nav-link ${activeSection === 'career-goals' ? 'active' : ''}`}>Career Goals</button>
+            <button onClick={() => scrollToSection('project-showcase')} className={`nav-link ${activeSection === 'project-showcase' ? 'active' : ''}`}>Project Showcase</button>
             <button onClick={() => scrollToSection('resume')} className={`nav-link ${activeSection === 'resume' ? 'active' : ''}`}>Resume</button>
             {/* Projects tab hidden - might add back later if owner wants */}
             {/* <button onClick={() => scrollToSection('projects')} className={`nav-link nav-link-projects ${activeSection === 'projects' ? 'active' : ''}`}>Projects</button> */}
@@ -765,6 +766,79 @@ export default function ScrollEffect() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Project Showcase Section */}
+      {loadingComplete && (
+        <section id="project-showcase" className="page-section content-section">
+          <div className="section-content" style={{ maxWidth: '1200px' }}>
+            <h2 className="section-title">Project Showcase</h2>
+            <p className="text-gray-400 text-center max-w-2xl mx-auto -mt-4 mb-12 leading-relaxed">
+              A curated collection of hands-on projects — click any card to dive into the full case study.
+            </p>
+
+            <div className="showcase-grid">
+              {/* FEATURED — Discovery Project */}
+              <a href="/discovery" className="showcase-card showcase-card-featured group">
+                <div className="showcase-card-tag">
+                  <span className="showcase-tag-dot" />
+                  ECE 1100 · DISCOVERY PROJECT · FEATURED
+                </div>
+                <div className="showcase-card-body">
+                  <div className="showcase-card-content">
+                    <h3 className="showcase-card-title">
+                      Time Token Planner <span className="showcase-card-plus">+</span> Focus Sensor
+                    </h3>
+                    <p className="showcase-card-desc">
+                      A wearable + app concept that treats the 1,440 minutes of a day like a budget,
+                      and uses physiological signals from a wrist sensor to detect when you&apos;re drifting off-task.
+                      Walk through the pitch, the honest scope-down pivot, the live signal-processing demo,
+                      and the interactive planner prototype.
+                    </p>
+                    <div className="showcase-card-tags">
+                      <span className="showcase-mini-tag">DSP</span>
+                      <span className="showcase-mini-tag">BLE</span>
+                      <span className="showcase-mini-tag">Embedded</span>
+                      <span className="showcase-mini-tag">React</span>
+                      <span className="showcase-mini-tag">Canvas</span>
+                    </div>
+                    <span className="showcase-card-cta">
+                      Open the dashboard
+                      <span className="showcase-cta-arrow">→</span>
+                    </span>
+                  </div>
+
+                  {/* Mini "scope" preview */}
+                  <div className="showcase-card-visual">
+                    <div className="showcase-scope">
+                      <div className="showcase-scope-head">
+                        <span className="showcase-scope-dot" />
+                        <span className="showcase-scope-label">PPG · 50 Hz</span>
+                        <span className="showcase-scope-bpm">72 BPM</span>
+                      </div>
+                      <svg viewBox="0 0 200 60" className="showcase-scope-trace" preserveAspectRatio="none">
+                        <path
+                          d="M0,30 Q5,30 8,15 T18,30 Q22,30 26,15 T36,30 Q40,30 44,15 T54,30 Q58,30 62,15 T72,30 Q76,30 80,15 T90,30 Q94,30 98,15 T108,30 Q112,30 116,15 T126,30 Q130,30 134,15 T144,30 Q148,30 152,15 T162,30 Q166,30 170,15 T180,30 Q184,30 188,15 T198,30"
+                          fill="none"
+                          stroke="#5eead4"
+                          strokeWidth="1.4"
+                        />
+                      </svg>
+                      <div className="showcase-scope-foot">
+                        <span>● LIVE</span>
+                        <span>DRIFT 0.32</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <p className="text-gray-500 text-center text-sm mt-10">
+              More projects available in the <button onClick={() => scrollToSection('about')} className="text-cyan-400 hover:text-cyan-300 transition-colors underline-offset-2 hover:underline">About Me</button> section.
+            </p>
           </div>
         </section>
       )}
